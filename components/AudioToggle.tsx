@@ -16,7 +16,7 @@ export function AudioToggle() {
     if (!audioRef.current) {
       const a = new Audio("/audio/ambient.mp3");
       a.loop = true;
-      a.volume = 0.3; 
+      a.volume = 0.18; // subtle
       audioRef.current = a;
     }
     return audioRef.current;
