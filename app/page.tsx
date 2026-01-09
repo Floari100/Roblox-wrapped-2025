@@ -73,8 +73,7 @@ export default function Home() {
             </div>
 
             <div className="mt-4 text-sm text-slate-600 leading-relaxed">
-              No API key needed. We use public badge award timestamps. If the account has a very large badge history,
-              the MVP scans the newest badges first.
+              We use public badge award timestamps. We only count the days on which you earned badges/achievements.
             </div>
           </div>
 

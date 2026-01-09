@@ -83,23 +83,36 @@ export function WrappedDeck({ slides }: { slides: SlideModel[] }) {
       <div className="absolute top-5 right-5 z-40">
       <AudioToggle />
       </div>
-      <div
-        className="absolute inset-0 z-10"
+          {/* Left / Right tap zones (do not block scrolling in the center) */}
+      <button
+        type="button"
+        aria-label="Previous slide"
+        className="absolute left-0 top-0 h-full w-[18vw] md:w-[22vw] z-30 bg-transparent"
         onClick={(e) => {
-          const x = (e as any).clientX ?? 0;
-          if (x > window.innerWidth / 2) next();
-          else prev();
+          e.stopPropagation();
+          prev();
         }}
       />
+
+      <button
+        type="button"
+        aria-label="Next slide"
+        className="absolute right-0 top-0 h-full w-[18vw] md:w-[22vw] z-30 bg-transparent"
+        onClick={(e) => {
+          e.stopPropagation();
+          next();
+        }}
+      />
+
 
       <div className="absolute inset-0 z-20">
         <AnimatePresence mode="wait" initial={false} custom={dir}>
           <motion.div
             key={slides[index].key}
             custom={dir}
-            initial={{ opacity: 0, x: dir * 70, filter: "blur(8px)" }}
-            animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-            exit={{ opacity: 0, x: dir * -70, filter: "blur(8px)" }}
+            initial={{ opacity: 0, x: dir * 60 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: dir * -60 }}            
             transition={{ duration: 0.38, ease: "easeOut" }}
             className="relative h-full w-full"
           >

@@ -100,12 +100,19 @@ function pickPlayerType(args: {
 }) {
   const { badges2025, activeDays, longestStreak, busiestMonthCount, activeMonths } = args;
   const shareBusiest = badges2025 > 0 ? busiestMonthCount / badges2025 : 0;
-
+  if (longestStreak >= 70 && badges2025 >= 750) {
+    return { type: "Absurd", vibe: "HOW??" };
+  }
+  if (badges2025 >= 500 || longestStreak >= 50) 
+    return { type: "Hustler", vibe: "absurd output." };
+  if (longestStreak >= 45 && badges2025 >= 150) {
+    return { type: "Iron Will", vibe: "Discipline mode: activated. You didn’t miss." };
+  }
   if (badges2025 >= 200 || longestStreak >= 21) {
     return { type: "Grinder", vibe: "High volume + consistency. You kept showing up." };
   }
   if (badges2025 >= 40 && shareBusiest >= 0.6) {
-    return { type: "Sprinter", vibe: "One big push. Peak-month energy." };
+    return { type: "Sprinter", vibe: "One big push." };
   }
   if (activeMonths >= 9 && badges2025 >= 30) {
     return { type: "Explorer", vibe: "Steady across the year. Always discovering." };

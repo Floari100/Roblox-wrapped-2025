@@ -199,7 +199,8 @@ export function Slide({ slide, index, total }: { slide: SlideModel; index: numbe
               {slide.subtext && <div className="text-slate-600 mb-5">{slide.subtext}</div>}
 
               {slide.items?.length ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="max-h-[52vh] md:max-h-[56vh] overflow-y-auto pr-2 [scrollbar-gutter:stable]">
+                
                   {slide.items.map((it, i) => (
                     <motion.div
                       key={`${slide.key}-${i}`}
